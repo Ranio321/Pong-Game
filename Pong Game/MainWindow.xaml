@@ -3,10 +3,58 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pong_Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Pong Multiplayer" Height="509" Width="915" KeyDown="MainWindow_KeyDown" KeyUp="Window_KeyUp"  ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="400"/>
+
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Column="2" Grid.Row="2" x:Name="Board" Background="Black">
+            <Ellipse Width="{Binding Size}" Height="{Binding Size}" 
+                     Fill="White" Canvas.Top="{Binding Y}" 
+                     Canvas.Left="{Binding X}" Name="Ball"/>
+            <TextBlock Name="LeftPointer" Canvas.Left="295" TextWrapping="Wrap" Text="{Binding LeftPlayer}" FontSize="40" TextAlignment="Center" Canvas.Top="10" Height="92" Width="73" Foreground="White"/>
+            <TextBlock Name="RightPointer" Canvas.Left="431" TextWrapping="Wrap" Text="{Binding RightPlayer}" FontSize="40" TextAlignment="Center" Canvas.Top="10"  Foreground="White" Height="92" Width="73" RenderTransformOrigin="0.772,0.524"/>
+        </Canvas>
+
+        <Canvas Grid.Column="1" Grid.Row="2" x:Name="Left" Background="Black">
+            <Rectangle  Width="30" Height="100" Fill="White" Canvas.Top="{Binding Path=Y}" Name="LeftPad" ></Rectangle>
+
+        </Canvas>
+
+        <Canvas Grid.Column="3" Grid.Row="2" x:Name="Right" Background="Black">
+            <Rectangle Width="30" Height="100" Fill="White" Canvas.Top="{Binding Path=Y}" Name="RightPad" ></Rectangle>
+        </Canvas>
+
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0" Orientation="Horizontal">
+            <Button Width="90" Height="30" Content="Options" x:Name="Options" Click="Options_Click"/>
+            <Button Width="90" Height="30" Content="Restart" x:Name="Restart" Margin="725,0,0,0" Click="Restart_Click"/>
+
+        </StackPanel>
+
+        <Canvas Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Background="Gold"/>
+        <Canvas Grid.Column="5" Grid.Row="2" Grid.RowSpan="2" Background="Gold"/>
+        <Canvas Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1"  Background="Gold" />
+
+        <Canvas Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="3"  Background="Gold" />
+        <Canvas Grid.Column="2" Grid.Row="2" Background="White" Width="5"/>
+
     </Grid>
+
 </Window>
+
+
+
