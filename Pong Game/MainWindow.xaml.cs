@@ -48,7 +48,7 @@ namespace Pong_Game
 
             InitializeTimers();
           
-            options.BallColor.SelectionChanged += comboBox_SelectionChanged;
+           // options.BallColor.SelectionChanged += comboBox_SelectionChanged;
 
         }
 
