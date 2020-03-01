@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="Pong Multiplayer" Height="509" Width="915" KeyDown="MainWindow_KeyDown" KeyUp="Window_KeyUp"  ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,12 +23,13 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Canvas Grid.Column="2" Grid.Row="2" x:Name="Board" Background="Black">
+        <Canvas Grid.Column="2" Grid.Row="2" x:Name="Board" Background="Black" >
             <Ellipse Width="{Binding Size}" Height="{Binding Size}" 
                      Fill="White" Canvas.Top="{Binding Y}" 
                      Canvas.Left="{Binding X}" Name="Ball"/>
             <TextBlock Name="LeftPointer" Canvas.Left="295" TextWrapping="Wrap" Text="{Binding LeftPlayer}" FontSize="40" TextAlignment="Center" Canvas.Top="10" Height="92" Width="73" Foreground="White"/>
             <TextBlock Name="RightPointer" Canvas.Left="431" TextWrapping="Wrap" Text="{Binding RightPlayer}" FontSize="40" TextAlignment="Center" Canvas.Top="10"  Foreground="White" Height="92" Width="73" RenderTransformOrigin="0.772,0.524"/>
+            <TextBlock x:Name="PressSpace" Canvas.Left="251" TextWrapping="Wrap" Text="Press space" Foreground="White" Canvas.Top="154" FontSize="45" TextAlignment="Center" VerticalAlignment="Center" Height="98" Width="305"/>
         </Canvas>
 
         <Canvas Grid.Column="1" Grid.Row="2" x:Name="Left" Background="Black">
@@ -40,8 +42,8 @@
         </Canvas>
 
         <StackPanel Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0" Orientation="Horizontal">
-            <Button Width="90" Height="30" Content="Options" x:Name="Options" Click="Options_Click"/>
-            <Button Width="90" Height="30" Content="Restart" x:Name="Restart" Margin="725,0,0,0" Click="Restart_Click"/>
+            <Button Width="90" Height="30" Content="Options" x:Name="Options" Click="Options_Click" Focusable="False"/>
+            <Button Width="90" Height="30" Content="Restart" x:Name="Restart" Margin="725,0,0,0" Click="Restart_Click" Focusable="False"/>
 
         </StackPanel>
 

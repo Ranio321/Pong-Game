@@ -17,7 +17,7 @@ using System.Timers;
 using Pong_Game.VM;
 using Pong_Game.Model;
 using System.Windows.Threading;
-
+using Pong_Game.View;
 namespace Pong_Game
 {
  
@@ -25,8 +25,9 @@ namespace Pong_Game
     {
         private DispatcherTimer timer;
         private DispatcherTimer Balltimer;
-        bool GamePaused = false;
+       
         Components components;
+     // private Options options= new Options();
 
         public MainWindow()
         {
@@ -46,10 +47,17 @@ namespace Pong_Game
             components.keys.Add("S", false);
 
             InitializeTimers();
-
-            
+          
+            options.BallColor.SelectionChanged += comboBox_SelectionChanged;
 
         }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+         
+ 
+        }
+
         private void InitializeTimers()
         {
             timer = new DispatcherTimer();
@@ -67,6 +75,7 @@ namespace Pong_Game
     
             timer.Start();
             Balltimer.Start();
+          PressSpace.Visibility = Visibility.Hidden;
  
         }
 
@@ -74,6 +83,7 @@ namespace Pong_Game
         {
             timer.Stop();
             Balltimer.Stop();
+            PressSpace.Visibility = Visibility.Visible;
         }
 
 
@@ -143,13 +153,19 @@ namespace Pong_Game
 
         private void Options_Click(object sender, RoutedEventArgs e)
         {
-
+          // options.Show();
         }
 
         private void Restart_Click(object sender, RoutedEventArgs e)
         {
             StopGame();
             components.RestartGame();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //options.Close();
+            
         }
     }
 }

@@ -23,5 +23,8 @@ namespace Pong_Game.View
         {
             InitializeComponent();
         }
+
+
+
     }
 }
